@@ -10,35 +10,39 @@
     <a href="javascript:void(0);" onclick="myFunction()">(☰)</a>
   </li>
   <li><a href="#">econhub</a></li>
-  <li class="w3-hide-small"><a href="#">Link 1</a></li>
+  <!--<li class="w3-hide-small"><a href="#">Link 1</a></li>
   <li class="w3-hide-small"><a href="#">Link 2</a></li>
-  <li class="w3-hide-small"><a href="#">Link 3</a></li>
+  <li class="w3-hide-small"><a href="#">Link 3</a></li>-->
 </ul>
 
 <div id="demo" class="w3-hide w3-hide-large w3-hide-medium">
   <ul class="w3-navbar w3-left-align w3-large w3-black">
-    <li><a href="#">Link 1</a></li>
+    <!--<li><a href="#">Link 1</a></li>
     <li><a href="#">Link 2</a></li>
-    <li><a href="#">Link 3</a></li>
+    <li><a href="#">Link 3</a></li>-->
   </ul>
 </div>
 
 <div class="w3-container w3-row-padding">
 
 {% for each in all_news %}
-<div class="w3-third">
-<header class="w3-container w3-black w3-margin-top">
-  <h1><a href={{each.url}}>{{each.headline}}</a></h1>
-  <p>{{each.date}}</p>
-  <p>{{each.source}}</p>
-</header>
-</div>
-{%endfor%}
 
+<div class="w3-container w3-blacks">
+
+<div class="w3-panel w3-third w3-black">
+<h2>{{each.source}}</h2>
+<h3>{{each.date}}</h3>
 </div>
+
+<div class="w3-rest w3-container w3-padding">
+<h1><a href={{each.url}}>{{each.headline}}</a></h1>
+</div>
+</div>
+
+{%endfor%}
  
 </div>
-
+</table>
 <script>
 function myFunction() {
     var x = document.getElementById("demo");
