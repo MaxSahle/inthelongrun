@@ -80,6 +80,8 @@ TEMPLATES = [
 ]
 
 
+STATIC_URL = '/static/'
+
 
 WSGI_APPLICATION = 'econhub.wsgi.application'
 
