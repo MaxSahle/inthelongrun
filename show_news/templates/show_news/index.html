@@ -13,8 +13,8 @@
     <a href="javascript:void(0);" onclick="myFunction()">(☰)</a>
   </li>
   <li><a href="#">econhub</a></li>
-  <!--<li class="w3-hide-small"><a href="#">Link 1</a></li>
-  <li class="w3-hide-small"><a href="#">Link 2</a></li>
+  <li class="w3-hide-small"><a href="javascript:void(0);" onclick="select_blog()">Hide Items</a></li>
+  <!--<li class="w3-hide-small"><a href="#">Link 2</a></li>
   <li class="w3-hide-small"><a href="#">Link 3</a></li>-->
 </ul>
 
@@ -30,10 +30,10 @@
 
 {% for each in all_news %}
 
-<div class="w3-container w3-black w3-margin-top w3-padding">
+<div id ="item" class="w3-container w3-black w3-margin-top w3-padding">
 
 <div class="w3-panel w3-third w3-black">
-<h2>{{each.source}}</h2>
+<h2 id="source">{{each.source}}</h2>
 <h3>{{each.date}}</h3>
 </div>
 
@@ -51,7 +51,7 @@
 <p>Jobs Jobs Jobs</p>
 </div>
 <div class="w3-container w3-yellow w3-margin-top w3-padding">
-<p>Jobs Jobs Jobs</p>
+<p id="Test">Jobs Jobs Jobs</p>
 </div>
 <div class="w3-container w3-yellow w3-margin-top w3-padding">
 <p>Jobs Jobs Jobs</p>
@@ -80,6 +80,18 @@ function myFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+
+function select_blog() {
+    var items = document.getElementsByClassName("w3-container w3-black w3-margin-top w3-padding");
+    for (i = 0; i < items.length; i++) { 
+	var children = items[i].children;
+	var children2 = children[0].children
+	if (children2[0].innerHTML != "mainly macro"){
+		items[i].style.display='none'
+		document.getElementById("Test").innerHTML = children2[0].innerHTML
+	}
+	}
+    }
 </script>
 
 </body>
