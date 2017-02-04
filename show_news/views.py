@@ -13,7 +13,8 @@ def index(request):
     all_sources = Sources.objects.all()
     all_news = News.objects.all()
     context ={
-	'all_news': all_news
+	'all_news': all_news,
+	'all_sources': all_sources
 	}
     for each in all_sources:
     	source_instance = Source(name=each.name, url=each.url, rangking = each.rangking, code = each.code)

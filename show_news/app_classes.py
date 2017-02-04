@@ -32,7 +32,6 @@ class Source(object):
         for i in self.articles_to_add:
             assert i is not None
             assert i.url is not None 
-            assert requests.get(i.url, verify=False).status_code == 200
             if i.check_for_item() == None:
                 i.save_article()
             else:
