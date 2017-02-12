@@ -8,6 +8,7 @@ class Source(object):
         self.url = url
         self.ranking = rangking
         self.code = code
+        self.author = "" 
         self.articles_to_add = []
         
     def get_news(self):
@@ -31,7 +32,8 @@ class Source(object):
         assert self.articles_to_add is not None, "No new articles to add."
         for i in self.articles_to_add:
             assert i is not None
-            assert i.url is not None 
+            assert i.headline is not None, i.source
+            assert i.url is not None, i.source 
             if i.check_for_item() == None:
                 i.save_article()
             else:
@@ -47,13 +49,15 @@ class Article(object):
         self.description = description
         self.source  = source
         self.category = category
+        self.author = ""
+
 
     def check_for_item(self):
 	from show_news.models import News
         if not News.objects.filter(url = self.url):
             return None
         else: 
-            return "Item already exists."
+            return News.objects.filter(url = self.url)
     
     def save_article(self):
 	from show_news.models import News

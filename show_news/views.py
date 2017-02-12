@@ -11,7 +11,7 @@ from show_news.app_classes import Source, Article
 def index(request):
 
     all_sources = Sources.objects.all()
-    all_news = News.objects.all()
+    all_news = News.objects.all().order_by('-date')
     context ={
 	'all_news': all_news,
 	'all_sources': all_sources
