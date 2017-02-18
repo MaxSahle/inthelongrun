@@ -59,19 +59,21 @@
 
 {% for each in all_news %}
 
-<div class="w3-rest w3-teal w3-container w3-padding w3-margin-top alternative1 " style="height: 100%; display: none; padding: 0px">
+<div class="w3-rest w3-teal w3-container w3-padding w3-margin-top alternative1" style="height: 100%; display: none; padding: 0px">
+<div>
 <h4><a href={{each.url}}>{{each.headline}}</a></h4>
-<h6>{{each.source}} | {{each.date}}</h6>
+<h6>{{each.source}}</h6><h6>{{each.date}}</h6>
+</div>
 </div>
 
-<div id ="item" class="w3-container w3-teal w3-margin-top w3-padding alternative2">
+<div class="w3-container w3-teal w3-margin-top w3-padding alternative2">
 <div class="w3-panel w3-third w3-teal">
 <h6 class= "w3-wide">{{each.author}}</h6>
 <h2 id="source">{{each.source}}</h2>
 <h3>{{each.date}}</h3>
 </div>
 
-<div class="w3-rest w3-container w3-padding w3-white alternative2" style="height: 100%; padding: 0px">
+<div class="w3-rest w3-container w3-padding w3-white" style="height: 100%; padding: 0px">
 <h3><a href={{each.url}}>{{each.headline}}</a></h3>
 <p>{{each.description}}</p>
 </div>
@@ -116,18 +118,33 @@ function myFunction() {
 }
 
 function select_blog(name) {
-    var items = document.getElementsByClassName("w3-container w3-teal w3-margin-top w3-padding alternative2");
-    
-    for (i = 0; i < items.length; i++) {
-	items[i].style.display='block' 
-	var children = items[i].children;
-	var children2 = children[0].children;
-	if (children2[1].innerHTML != name ){
-		items[i].style.display='none'
-		document.getElementById("Test").innerHTML = children2[1].innerHTML
-	}
-	}
+    var items = document.getElementsByClassName("alternative1");
+    var items2 = document.getElementsByClassName("alternative2");
+    for (i = 0; i < items.length; i++){
+		if(items[i].style.display != 'none'){
+	 		for (i = 0; i < items.length; i++) {
+				items[i].style.display='block' 
+				var children = items[i].children;
+				var children2 = children[0].children;
+				if (children2[1].innerHTML != name ){
+					items[i].style.display='none'
+				}
+			}
+		}
     }
+    for (i = 0; i < items2.length; i++){
+		if(items2[i].style.display != 'none'){
+			for (i = 0; i < items2.length; i++) {
+				items2[i].style.display='block' 
+				var children = items2[i].children;
+				var children2 = children[0].children;
+				if (children2[1].innerHTML != name ){
+					items2[i].style.display='none'
+				}
+			}
+		}
+    }
+}
 
 function show_authors(){
 	var authors = document.getElementById("all-authors");
@@ -150,23 +167,22 @@ function show_blogs(){
 function show_alternative(){
 	var items = document.getElementsByClassName("alternative1");
 	var items2 = document.getElementsByClassName("alternative2");
-	if (items[1].style.display === 'none'){
-		for (i = 0; i < items.length; i++){
-			items[i].style.display = 'block';
-		}
-		for (i = 0; i < items2.length; i++){
-				items2[i].style.display = 'none';
-				}
-		}
-
-	else {  for (i = 0; i < items.length; i++){
+	var count = 0
+	for (i = 0; i < items.length; i++){
+		if(items[i].style.display != 'none'){
+	 		items2[i].style.display = 'block';
 			items[i].style.display = 'none';
-		}
-		for (i = 0; i < items2.length; i++){
-				items2[i].style.display = 'block';
-				}
+			count += 1;
 		}
 	}
+	if (count>0){return;};
+	for (i = 0; i < items2.length; i++){
+		if(items2[i].style.display != 'none'){
+			items2[i].style.display = 'none';
+			items[i].style.display = 'block';
+		}
+	}
+}
 
 (function hide_sidenav() {
 	var content = document.getElementsByClassName("content");
