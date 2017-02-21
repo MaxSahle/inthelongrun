@@ -48,6 +48,7 @@
   {% for each in all_sources %}
 	<span class="w3-tag w3-teal" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('{{each.name}}')"><h3>{{each.name}}</h3></a></span>
   {%endfor%}
+  <span class="w3-tag w3-teal" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('show all')"><h3>show all</h3></a></span>
 </div>
 
 <div class="w3-container w3-padding-0 w3-margin-top" id="all-authors" style="display: none;">
@@ -55,6 +56,7 @@
   {% for each in all_sources %}
 	<span class="w3-tag w3-amber" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('{{each.name}}')"><h3>{{each.author}}</h3></a></span>
   {%endfor%}
+  <span class="w3-tag w3-amber" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('show all')"><h3>show all</h3></a></span>
 </div>
 
 {% for each in all_news %}
