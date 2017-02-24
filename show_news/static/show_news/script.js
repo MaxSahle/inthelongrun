@@ -1,10 +1,10 @@
 
-function myFunction() {
-    var x = document.getElementById("demo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
+function dropdown() {
+    var menu = document.getElementById("demo");
+    if (menu.className.indexOf("w3-show") == -1) {
+        menu.className += " w3-show";
     } else { 
-        x.className = x.className.replace(" w3-show", "");
+        menu.className = menu.className.replace(" w3-show", "");
     }
 }
 
@@ -54,6 +54,7 @@ function show_authors(){
     	} else {
         	authors.style.display = 'none';
     	}
+	dropdown();
 }
 
 function show_blogs(){
@@ -63,6 +64,7 @@ function show_blogs(){
     	} else {
         	blogs.style.display = 'none';
     	}
+	dropdown();
 }
 
 function show_alternative(){
@@ -76,7 +78,10 @@ function show_alternative(){
 			count += 1;
 		}
 	}
-	if (count>0){return;};
+	dropdown();
+	if (count>0){
+		return;
+	};
 	for (i = 0; i < items2.length; i++){
 		if(items2[i].style.display != 'none'){
 			items2[i].style.display = 'none';
@@ -104,6 +109,8 @@ function check_display(){
 	var content = document.getElementsByClassName("content");
 	if (window.innerWidth < 601){
 		content[0].style.marginLeft ='0';
+		show_alternative();
+		dropdown();
 	}
 	if (window.innerWidth > 601){
 		content[0].style.marginLeft ='12.5%';

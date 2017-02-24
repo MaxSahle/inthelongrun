@@ -3,7 +3,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'show_news/index.css' %}" />
 
-<title>econhub</title>
+<title>EconNet</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,34 +11,27 @@
 
 <ul class="w3-navbar w3-large w3-teal w3-left-align w3-hide-medium w3-hide-large">
   <li class="w3-hide-medium w3-hide-large w3-teal w3-opennav w3-right">
-    <a href="javascript:void(0);" onclick="myFunction()">☰</a>
+    <a href="javascript:void(0);" onclick="dropdown()">☰</a>
   </li>
-  <li><a href="#">EconNet</a></li>
-  <li class="w3-hide-small">
-  <a href="javascript:void(0);" onclick="show_blogs()">select a blog</a>
+  <li><a>EconNet</a></li>
+<div id="demo" class="w3-hide">
+  <li>
+  <h6><a href="javascript:void(0);" onclick="show_blogs()">select blog</a></h6>
   </li>
-  <li class="w3-hide-small">
-  <a href="javascript:void(0);" onclick="show_alternative()">alternative display</a>
+  <li>
+  <h6><a href="javascript:void(0);" onclick="show_authors()">select author</a></h6>
   </li>
-  <li class="w3-hide-small">
-  <a href="javascript:void(0);" onclick="show_authors()">select an author</a>
+  <li>
+  <h6><a href="javascript:void(0);" onclick="show_alternative()">hide details</a></h6>
   </li>
-  <!--<li class="w3-hide-small"><a href="#">Link 2</a></li>
-  <li class="w3-hide-small"><a href="#">Link 3</a></li>-->
+</div>
 </ul>
 
-<div id="demo" class="w3-hide">
-  <ul class="w3-navbar w3-left-align w3-large w3-teal">
-    <!--<li><a href="#">Link 1</a></li>
-    <li><a href="#">Link 2</a></li>
-    <li><a href="#">Link 3</a></li>-->
-  </ul>
-</div>
+
 <nav class="w3-sidenav w3-teal w3-hide-small w3-container" style="width:12.5%">
   <h3><a href="#">EconNet</a></h3>
-  <h6><a href="javascript:void(0);" onclick="hide_sidenav()">hide sidenav</a></h6>
-  <h6><a href="javascript:void(0);" onclick="show_blogs()">select a blog</a></h6>
-  <h6><a href="javascript:void(0);" onclick="show_authors()">select an author</a></h6>
+  <h6><a href="javascript:void(0);" onclick="show_blogs()">select blog</a></h6>
+  <h6><a href="javascript:void(0);" onclick="show_authors()">select author</a></h6>
   <h6><a href="javascript:void(0);" onclick="show_alternative()">hide details</a></h6>
 </nav>
 
@@ -46,17 +39,17 @@
 <div class="w3-container w3-padding-0 w3-margin-top" id="all-blogs" style="display: none;">
 <span onclick="this.parentElement.style.display='none'" class="w3-closebtn">&times;</span>
   {% for each in all_sources %}
-	<span class="w3-tag w3-teal" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('{{each.name}}')"><h3>{{each.name}}</h3></a></span>
+	<span class="w3-tag w3-teal" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('{{each.name}}')"><h6>{{each.name}}</h6></a></span>
   {%endfor%}
-  <span class="w3-tag w3-teal" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('show all')"><h3>show all</h3></a></span>
+  <span class="w3-tag w3-teal" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('show all')"><h6>show all</h6></a></span>
 </div>
 
 <div class="w3-container w3-padding-0 w3-margin-top" id="all-authors" style="display: none;">
 <span onclick="this.parentElement.style.display='none'" class="w3-closebtn">&times;</span>
   {% for each in all_sources %}
-	<span class="w3-tag w3-amber" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('{{each.name}}')"><h3>{{each.author}}</h3></a></span>
+	<span class="w3-tag w3-amber" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('{{each.name}}')"><h6>{{each.author}}</h6></a></span>
   {%endfor%}
-  <span class="w3-tag w3-amber" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('show all')"><h3>show all</h3></a></span>
+  <span class="w3-tag w3-amber" style="margin-bottom:5px"><a href="javascript:void(0);" onclick="select_blog('show all')"><h6>show all</h6></a></span>
 </div>
 
 {% for each in all_news %}
@@ -64,13 +57,12 @@
 <div class="w3-rest w3-teal w3-container w3-padding w3-margin-top alternative1" style="height: 100%; display: none; padding: 0px">
 <div>
 <h4><a href={{each.url}}>{{each.headline}}</a></h4>
-<h6>{{each.source}}</h6><h6>{{each.date}}</h6>
+<span>{{each.source}}</span><span> - {{each.date}}</span>
 </div>
 </div>
 
 <div class="w3-container w3-teal w3-margin-top w3-padding alternative2">
 <div class="w3-panel w3-third w3-teal">
-<h6 class= "w3-wide">{{each.author}}</h6>
 <h2 id="source">{{each.source}}</h2>
 <h3>{{each.date}}</h3>
 </div>
