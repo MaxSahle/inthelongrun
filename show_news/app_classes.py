@@ -6,7 +6,7 @@ class Source(object):
 
         self.name = name
         self.url = url
-        self.ranking = rangking
+        self.rangking = rangking
         self.code = code
         self.author = "" 
         self.articles_to_add = []
@@ -54,10 +54,10 @@ class Article(object):
 
     def check_for_item(self):
 	from show_news.models import News
-        if not News.objects.filter(url = self.url):
+        if not News.objects.filter(url = self.url).filter(headline = self.headline):
             return None
         else: 
-            return News.objects.filter(url = self.url)
+            return "Item already exists."
     
     def save_article(self):
 	from show_news.models import News
