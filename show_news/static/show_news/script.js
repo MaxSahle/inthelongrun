@@ -80,6 +80,7 @@ function show_alternative(){
 	}
 	dropdown();
 	if (count>0){
+		change_content("details", "hide details");
 		return;
 	};
 	for (i = 0; i < items2.length; i++){
@@ -88,6 +89,8 @@ function show_alternative(){
 			items[i].style.display = 'block';
 		}
 	}
+	change_content("details", "show details");
+
 }
 function check_display(){
 	var items = document.getElementsByClassName("alternative1");
@@ -105,16 +108,24 @@ function check_display(){
 	}
 }
 
-(function hide_sidenav() {
-	var content = document.getElementsByClassName("content");
+function change_content(classname, content){
+	var items = document.getElementsByClassName(classname);
+	for ( i = 0; i < items.length; i++){
+		items[i].innerHTML = content;
+	}
+}
+
+function hide_sidenav() {
+	var content = document.getElementById("content");
 	if (window.innerWidth < 601){
-		content[0].style.marginLeft ='0';
+		content.style.marginLeft ='0';
 		show_alternative();
 		dropdown();
 	}
 	if (window.innerWidth > 601){
-		content[0].style.marginLeft ='12.5%';
+		content.style.marginLeft ='12.5%';
 	}
-})();
+}
 
+(hide_sidenav());
 

@@ -22,7 +22,7 @@
   <h6><a href="javascript:void(0);" onclick="show_authors()">select author</a></h6>
   </li>
   <li>
-  <h6><a href="javascript:void(0);" onclick="show_alternative()">hide details</a></h6>
+  <h6><a href="javascript:void(0);" onclick="show_alternative()" class="details" >hide details</a></h6>
   </li>
 </div>
 </ul>
@@ -32,10 +32,10 @@
   <h3><a href="#">EconNet</a></h3>
   <h6><a href="javascript:void(0);" onclick="show_blogs()">select blog</a></h6>
   <h6><a href="javascript:void(0);" onclick="show_authors()">select author</a></h6>
-  <h6><a href="javascript:void(0);" onclick="show_alternative()">hide details</a></h6>
+  <h6><a href="javascript:void(0);" onclick="show_alternative()" class="details">hide details</a></h6>
 </nav>
 
-<div class="w3-container w3-row-padding w3-twothird content" style="margin-left:12.5%">
+<div id="content" class="w3-container w3-row-padding w3-twothird" style="margin-left:12.5%">
 <div class="w3-container w3-padding-0 w3-margin-top" id="all-blogs" style="display: none;">
 <span onclick="this.parentElement.style.display='none'" class="w3-closebtn">&times;</span>
   {% for each in all_sources %}
