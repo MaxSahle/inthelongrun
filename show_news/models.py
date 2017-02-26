@@ -14,9 +14,15 @@ class Sources(models.Model):
     rangking = models.IntegerField(default=1)
     code = models.CharField(max_length = 2000)
     author = models.CharField(max_length=250, default="NA")
-    print_code = models.CharField(max_length = 2000)
+    print_code = models.TextField(max_length = 2000)
     def print_code(self):
-	return self.code.replace(" stopline ","\n") <= self.print_code
+	return self.code.replace(" stopline ","<br/>")
+
+    print_code.allow_tags = True
+    def check_source_online(self):
+	import requests
+	return requests.get(self.url, verify=False).status_code == 200
+    
     def __str__(self):
         return self.name
 
